@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/defaultLayout.astro'
+import Accordion from '../components/Accordion.svelte'
+import AddEntitie from '../components/AddEntitie.svelte';
+import EntitieList from '../components/EntitieList.svelte'
+---
+<Layout title='Sql Translator'>
+    <div class="w-96">
+       <AddEntitie /> 
+    </div>
+    <EntitieList client:load />
+</Layout>
+
+<style>
+  
+</style>
