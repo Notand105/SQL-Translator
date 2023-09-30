@@ -1,6 +1,6 @@
 export type atribute = {
     name: string,
-    data : 'integer' | 'string' 
+    data : 'integer' | 'text' | 'date'
 } 
 
 export type relation = {
@@ -12,7 +12,7 @@ export type relation = {
 
 export type entitie ={
     name:string,
-    PK : string,
+    PK : atribute[],
     atributes: atribute[]
 } 
 

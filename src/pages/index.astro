@@ -3,12 +3,16 @@ import Layout from '../layouts/defaultLayout.astro'
 import Accordion from '../components/Accordion.svelte'
 import AddEntitie from '../components/AddEntitie.svelte';
 import EntitieList from '../components/EntitieList.svelte'
+import ShowSql from '../components/ShowSql.svelte';
 ---
 <Layout title='Sql Translator'>
     <div class="w-96">
        <AddEntitie /> 
     </div>
-    <EntitieList client:load />
+    <div class="flex justify-center gap-20">
+        <EntitieList client:load />
+        <ShowSql client:load />
+    </div>
 </Layout>
 
 <style>

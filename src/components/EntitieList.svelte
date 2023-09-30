@@ -7,9 +7,12 @@
   {#each entities as entitie}
     <Accordion>
       <span slot="head" class="font-semibold"
-        >{entitie.name}  <span class="underline text-zinc-800">{entitie.PK}</span></span
+        >{entitie.name} </span
       >
       <div slot="details">
+        {#each entitie.PK as pks }
+          <h3 class="underline font-semibold">{pks.name} : {pks.data}</h3> 
+        {/each}
         {#each entitie.atributes as atributes}
           <div class="flex gap-2">
             <h4 class="text-md">{atributes.name}:</h4>
