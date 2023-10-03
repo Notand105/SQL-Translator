@@ -1,6 +1,8 @@
 <script>
   export let open = false;
+  export let entitie
 	import { slide } from 'svelte/transition';
+	import AddAtribute from './AddAtribute.svelte';
 	const handleClick = () => {
         open = !open
         
@@ -22,6 +24,7 @@
 	<div class="details bg-gray-200 text-slate-800 p-4 rounded-md" transition:slide>
 		<slot name="details">
 		</slot>
+		<AddAtribute entitie={entitie}/>	
 	</div>
 	{/if}
 </div>

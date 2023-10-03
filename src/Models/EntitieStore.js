@@ -1,6 +1,7 @@
-import type { entitie } from "../types/entities";
+import { writable } from "svelte/store";
 
-let entities:entitie[] = [
+export let entitieStore = writable(
+    [
     {
         name:'Persona',
         PK:[
@@ -82,13 +83,4 @@ let entities:entitie[] = [
     }
 ]
 
-function addEntitie(ent : entitie) : void{
-    entities.push(ent)
-}
-
-
-export default 
-{
-    entities,
-    addEntitie
-}
+)

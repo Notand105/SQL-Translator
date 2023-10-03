@@ -1,17 +1,18 @@
 <script>
-  import entities from "../Models/Entities";
+  import {entitieStore} from '../Models/EntitieStore.js'
   import Accordion from "./Accordion.svelte";
+  
 </script>
 
 <div class="w-72 ml-2 rounded flex flex-col ">
-  {#each entities as entitie}
-    <Accordion>
+  {#each $entitieStore as entitie, i}
+    <Accordion entitie={i}>
       <span slot="head" class="font-semibold"
-        >{entitie.name} </span
-      >
+      >{i + 1}. {entitie.name} 
+      </span>
       <div slot="details">
-        {#each entitie.PK as pks }
-          <h3 class="underline font-semibold">{pks.name} : {pks.data}</h3> 
+        {#each entitie.PK as pks, j }
+          <h3 class="font-semibold"><span class="underline">{pks.name} : {pks.data}</span></h3> 
         {/each}
         {#each entitie.atributes as atributes}
           <div class="flex gap-2">
@@ -19,7 +20,6 @@
             <h4>{atributes.data}</h4>
           </div>
         {/each}
-      </div>
     </Accordion>
   {/each}
 </div>

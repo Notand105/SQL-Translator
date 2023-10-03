@@ -1,9 +1,10 @@
 <script>
-import entities from "../Models/Entities";
+//import entities from "../Models/Entities";
+import {entitieStore} from '../Models/EntitieStore'
 </script>
 
 <div class="bg-gray-200 p-8 rounded-xl w-fit ">
-    {#each entities as entitie }
+    {#each $entitieStore as entitie }
         
     <code class="text-zinc-800">
        <p><span class="text-violet-800">CREATE TABLE </span>{entitie.name} {'{'} </p><br>

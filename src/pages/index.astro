@@ -7,7 +7,7 @@ import ShowSql from '../components/ShowSql.svelte';
 ---
 <Layout title='Sql Translator'>
     <div class="w-96">
-       <AddEntitie /> 
+       <AddEntitie client:load /> 
     </div>
     <div class="flex justify-center gap-20">
         <EntitieList client:load />
