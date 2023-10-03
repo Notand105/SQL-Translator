@@ -12,7 +12,7 @@
     }
 
     function addEntitie(){
-        $entitieStore = [...$entitieStore, entitie]
+        $entitieStore = [...$entitieStore, {...entitie}]
         console.log($entitieStore)
 
     }

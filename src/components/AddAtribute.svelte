@@ -12,8 +12,9 @@
 
   function handleSubmit(e:any){
     e.preventDefault()
-    $entitieStore[entitie].atributes = [ ...$entitieStore[entitie].atributes, atribute ]
+    $entitieStore[entitie].atributes = [ ...$entitieStore[entitie].atributes, {...atribute} ]
     showForm = false
+    atribute.name=''
   }
 
 </script>
