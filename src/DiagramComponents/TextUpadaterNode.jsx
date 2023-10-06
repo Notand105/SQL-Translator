@@ -9,7 +9,7 @@ function TextUpdaterNode({ data, isConnectable }) {
   }, []);
 
   return (
-    <div className="text-updater-node bg-white w-96 h-10   " >
+    <div className="text-updater-node">
       <Handle type="target" position={Position.Top} isConnectable={isConnectable} />
       <div>
         <label htmlFor="text">Text:</label>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -6,28 +6,47 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   addEdge,
+  applyEdgeChanges, applyNodeChanges
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 
 //import TextUpdaterNode from './TextUpadaterNode';
 import Relation from './Relation';
-const nodetypes = { rel: Relation}
 
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
   { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
+  { id: 'e', position: { x: 100, y: 100 }, data: { label: '3' }, type:'rel' },
 ];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2', label:'labelinthemiddle' }];
+const initialEdges = [{ id: 'e1-2', source: '1', target: '2', label:'labelinthemiddle', connectable:true }];
 
 export default function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [nodeIndex, setNodeIndex] = useState(3)
-  
-  let newNode = {id:nodeIndex, position:{x:100, y:110}, data:{label:'new'}, width:'150', height:'50', type:'rel'}
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const nodetypes = useMemo(()=>({ rel: Relation}), [])
+
+  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodeIndex, setNodeIndex] = useState(67)
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [setNodes]
+  );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [setEdges]
+  );
+  const onConnect = useCallback(
+    (connection) => setEdges((eds) => addEdge(connection, eds)),
+    [setEdges]
+  );
+
+  let newNode = {id:nodeIndex, position:{x:100, y:110}, data:{label:'new'}, width:'150', height:'50', type:'rel', isConnectable:'true'}
+
+  //const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
 
   const handleClick = () =>{
     console.log('clicked')
@@ -48,6 +67,7 @@ export default function App() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodetypes}
+        fitView
       >
         <Controls />
         <MiniMap />
