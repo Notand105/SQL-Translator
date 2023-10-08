@@ -1,0 +1,2 @@
+-Añadir relaciones entre las entidades
+-Lograr hacer conexiones entre los graficos 
