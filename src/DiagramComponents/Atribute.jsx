@@ -7,6 +7,7 @@ function Atribute({ data, isConnectable }) {
   isConnectable = true
   const [isEditing, setIsEditing] = useState(false); // State to track edit mode
   const [text, setText] = useState('atributo'); // Initial text
+  const [pk, setPk] = useState(false); // Initial text
 
   const handleDoubleClick = () => {
     setIsEditing(true); // Enable edit mode
@@ -18,10 +19,14 @@ function Atribute({ data, isConnectable }) {
   const handleChange = (e) => {
     setText(e.target.value); // Update the text as it changes
   };
-   
+
+  const makePK = (e) =>{
+    e.preventDefault()
+    setPk(pk => !pk)
+  }
 
   return (
-    <div className="text-updater-node w-32 flex rounded-full justify-center items-center p-2 border-2 bg-white" >
+    <div onContextMenu={makePK} className="text-updater-node w-32 flex rounded-full justify-center items-center p-2 border-2 bg-white" >
       <Handle type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
       <div className=''>
       {isEditing ? (
@@ -34,7 +39,7 @@ function Atribute({ data, isConnectable }) {
           
         />
       ) : (
-        <div onDoubleClick={handleDoubleClick} className=''>{text}</div>
+        <div onDoubleClick={handleDoubleClick} className={`${pk ? 'underline':''}`}>{text}</div>
       )}
       </div>
       <Handle
