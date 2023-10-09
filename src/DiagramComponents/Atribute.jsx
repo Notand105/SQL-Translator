@@ -3,10 +3,10 @@ import { Handle, Position } from 'reactflow';
 
 const handleStyle = { left: 10 };
 
-function Relation({ data, isConnectable }) {
+function Atribute({ data, isConnectable }) {
   isConnectable = true
   const [isEditing, setIsEditing] = useState(false); // State to track edit mode
-  const [text, setText] = useState('relación'); // Initial text
+  const [text, setText] = useState('atributo'); // Initial text
 
   const handleDoubleClick = () => {
     setIsEditing(true); // Enable edit mode
@@ -21,9 +21,9 @@ function Relation({ data, isConnectable }) {
    
 
   return (
-    <div className=" w-20 h-20 rotate-45 flex  justify-center items-center border-2 bg-white " >
-      <Handle className='bg-red-500 -translate-x-10' type="target" position={Position.Top} isConnectable={isConnectable} />
-      <div className='-rotate-45  '>
+    <div className="text-updater-node w-32 flex rounded-full justify-center items-center p-2 border-2 bg-white" >
+      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
+      <div className=''>
       {isEditing ? (
         <input
           type="text"
@@ -31,9 +31,10 @@ function Relation({ data, isConnectable }) {
           onChange={handleChange}
           onBlur={handleBlur}
           autoFocus
+          
         />
       ) : (
-        <div onDoubleClick={handleDoubleClick} className='bg-transparent'>{text}</div>
+        <div onDoubleClick={handleDoubleClick} className=''>{text}</div>
       )}
       </div>
       <Handle
@@ -42,11 +43,11 @@ function Relation({ data, isConnectable }) {
         id='ax'
         style={handleStyle}
         isConnectable={isConnectable}
-        className='bg-blue-500 translate-x-16'
+        className='bg-blue-500 translate-x-12'
       />
       {/* <Handle type="source" position={Position.Bottom} id='bx' isConnectable={isConnectable} /> */}
     </div>
   );
 }
 
-export default Relation;
+export default Atribute;

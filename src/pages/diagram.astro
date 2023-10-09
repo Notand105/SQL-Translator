@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/defaultLayout.astro";
-import OverviewFlow from '../DiagramComponents/BaseDiagram'
+import App from '../DiagramComponents/BaseDiagram'
+import Flow from "../DiagramComponents/BaseTest";
 ---
 <Layout title='ER Diagrams'>
-    <OverviewFlow client:load />
+    <App client:load />
+    <!-- <Flow client:load /> -->
 </Layout>
