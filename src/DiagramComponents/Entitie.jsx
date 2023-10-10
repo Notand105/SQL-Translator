@@ -21,8 +21,9 @@ function Entitie({ data, isConnectable }) {
    
 
   return (
-    <div className="text-updater-node w-40 flex rounded.sm justify-center items-center p-2 border-2 bg-white" >
-      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
+    <div className="text-updater-node w-40 text-lg flex rounded.sm justify-center items-center p-2 border-2 bg-white" >
+      <Handle id="dx" type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
+      <Handle id="cx" type="target" position={Position.Right} isConnectable={isConnectable} className='bg-red-500 ' />
       <div className=''>
       {isEditing ? (
         <input
@@ -45,6 +46,14 @@ function Entitie({ data, isConnectable }) {
         isConnectable={isConnectable}
         className='bg-blue-500 translate-x-16'
       />
+      <Handle
+        type="source"
+        position={Position.Left}
+        id='bx'
+        style={handleStyle}
+        isConnectable={isConnectable}
+        className='bg-blue-500 -translate-x-3'
+      /> 
       {/* <Handle type="source" position={Position.Bottom} id='bx' isConnectable={isConnectable} /> */}
     </div>
   );

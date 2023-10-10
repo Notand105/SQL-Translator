@@ -14,6 +14,7 @@ import 'reactflow/dist/style.css';
 import Relation from './Relation';
 import Atribute from './Atribute';
 import Entitie from './Entitie';
+import CustomEdge from './customEdge';
 /*
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
@@ -22,6 +23,9 @@ const initialNodes = [
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2', label:'labelinthemiddle', connectable:true }];
 */
+const edgeTypes = {
+  custom: CustomEdge
+};
 
 export default function App() {
 
@@ -32,7 +36,7 @@ export default function App() {
   const [nodeIndex, setNodeIndex] = useState(67)
  
 
-const onConnect = useCallback((params) => setEdges((eds) => addEdge({...params, type:'smoothstep'}, eds)), [setEdges]);
+const onConnect = useCallback((params) => setEdges((eds) => addEdge({...params, type:/*'smoothstep'*/ 'custom'}, eds)), [setEdges]);
 
 const handleAddRel = useCallback(() =>{
     let id = (Math.random() * 1001).toString()
@@ -83,6 +87,7 @@ const handleAddEnt = useCallback(() =>{
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodetypes}
+        edgeTypes={edgeTypes}
         fitView
       >
         <Controls />

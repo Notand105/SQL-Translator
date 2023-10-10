@@ -26,8 +26,9 @@ function Atribute({ data, isConnectable }) {
   }
 
   return (
-    <div onContextMenu={makePK} className="text-updater-node w-32 flex rounded-full justify-center items-center p-2 border-2 bg-white" >
-      <Handle type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
+    <div onContextMenu={makePK} className="text-updater-node w-20 text-sm flex rounded-full justify-center items-center p-1 border-2 bg-white" >
+      <Handle id="cx" type="target" position={Position.Top} isConnectable={isConnectable} className='bg-red-500' />
+      <Handle id="dx" type="target" position={Position.Right} isConnectable={isConnectable} className='bg-red-500 ' />
       <div className=''>
       {isEditing ? (
         <input
@@ -48,9 +49,16 @@ function Atribute({ data, isConnectable }) {
         id='ax'
         style={handleStyle}
         isConnectable={isConnectable}
-        className='bg-blue-500 translate-x-12'
+        className='bg-blue-500 translate-x-7'
       />
-      {/* <Handle type="source" position={Position.Bottom} id='bx' isConnectable={isConnectable} /> */}
+      <Handle
+        type="source"
+        position={Position.Left}
+        id='bx'
+        style={handleStyle}
+        isConnectable={isConnectable}
+        className='bg-blue-500 -translate-x-3'
+      />
     </div>
   );
 }
