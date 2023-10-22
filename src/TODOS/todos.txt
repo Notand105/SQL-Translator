@@ -1,2 +1,8 @@
 -Añadir relaciones entre las entidades
--Lograr hacer conexiones entre los graficos 
+
+-lograr que las lineas de conexion sean dobles
+
+-seguir con el programa?, quizas no vale la pena
+
+- deberia conseguir guardar y exportar graficos para si quiera considerar seguir
+
